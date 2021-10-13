@@ -1,10 +1,11 @@
 package com.tn.esprit.gestionstock.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class DetailProduit {
+public class DetailProduit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +18,6 @@ public class DetailProduit {
     private Date dateDerniereModification;
 
     private CategorieProduit categorieProduit;
-
-//    @OneToOne
-//    @JoinColumn(name = "idProduit")
-//    private Produit produit;
 
     public DetailProduit() {
     }

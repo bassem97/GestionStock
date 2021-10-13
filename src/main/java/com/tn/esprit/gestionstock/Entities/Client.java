@@ -26,7 +26,7 @@ public class Client implements Serializable {
 
     private CategorieClient categorieClient;
 
-    private Proffesion proffesion;
+    private Profession proffesion;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idClient")
@@ -36,7 +36,7 @@ public class Client implements Serializable {
         factures = new ArrayList<>();
     }
 
-    public Client(String nom, String prenom, Date dateNaissance, String email, String password, CategorieClient categorieClient, Proffesion proffesion) {
+    public Client(String nom, String prenom, Date dateNaissance, String email, String password, CategorieClient categorieClient, Profession proffesion) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -102,11 +102,11 @@ public class Client implements Serializable {
         this.categorieClient = categorieClient;
     }
 
-    public Proffesion getProffesion() {
+    public Profession getProffesion() {
         return proffesion;
     }
 
-    public void setProffesion(Proffesion proffesion) {
+    public void setProffesion(Profession proffesion) {
         this.proffesion = proffesion;
     }
 
@@ -123,15 +123,6 @@ public class Client implements Serializable {
                 ", proffesion=" + proffesion +
                 ", factures=" + factures +
                 '}';
-    }
-
-    // ENNNUMMSS
-    private enum Proffesion{
-        Docteur, Inghenieur, Etudiant, Commercial, Cadre, Autre
-    }
-
-    private enum CategorieClient{
-        Fidele, Ordinaire, Premium
     }
 
 }

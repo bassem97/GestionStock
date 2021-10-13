@@ -1,11 +1,12 @@
 package com.tn.esprit.gestionstock.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class DetailFacture {
+public class DetailFacture implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
