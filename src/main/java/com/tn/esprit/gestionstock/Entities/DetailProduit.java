@@ -18,9 +18,9 @@ public class DetailProduit {
 
     private CategorieProduit categorieProduit;
 
-    @OneToOne
-    @JoinColumn(name = "idProduit")
-    private Produit produit;
+//    @OneToOne
+//    @JoinColumn(name = "idProduit")
+//    private Produit produit;
 
     public DetailProduit() {
     }
