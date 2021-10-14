@@ -18,6 +18,7 @@ public class Client implements Serializable {
     private String prenom;
 
     @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.TIMESTAMP)
     private Date dateNaissance;
 
     private String email;
