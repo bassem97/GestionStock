@@ -16,7 +16,6 @@ public class ClientController  {
     @Autowired
     private ClientService clientService;
 
-
     @PostMapping("add")
     public Client add(@RequestBody Client client) {
         return clientService.add(client);
