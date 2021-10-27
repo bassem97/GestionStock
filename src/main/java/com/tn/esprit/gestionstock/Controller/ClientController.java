@@ -17,7 +17,7 @@ public class ClientController  {
     private ClientService clientService;
 
     @PostMapping("add")
-    public Client add(@RequestBody Client client) {
+    public Client add(@Valid @RequestBody Client client) {
         return clientService.add(client);
     }
 

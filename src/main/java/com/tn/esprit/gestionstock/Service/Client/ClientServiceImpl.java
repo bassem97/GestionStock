@@ -2,12 +2,14 @@ package com.tn.esprit.gestionstock.Service.Client;
 
 import com.tn.esprit.gestionstock.Entities.Client;
 import com.tn.esprit.gestionstock.Repository.ClientRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class ClientServiceImpl implements ClientService{
 
     @Autowired
@@ -30,6 +32,7 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public List<Client> findAll() {
+        clientRepository.findAll().forEach( client -> log.info("client :"+client));
         return clientRepository.findAll();
     }
 
