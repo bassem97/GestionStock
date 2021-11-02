@@ -32,7 +32,6 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public List<Client> findAll() {
-        clientRepository.findAll().forEach( client -> log.info("client :"+client));
         return clientRepository.findAll();
     }
 
