@@ -30,7 +30,7 @@ public class ClientServiceTest {
         Client savedClient = clientService.add(client);
         assertEquals(expected + 1, clientService.findAll().size());
         assertNotNull(savedClient.getNom());
-//        clientService.delete(savedClient.getIdClient());
+        clientService.delete(savedClient.getIdClient());
     }
 
     @Test

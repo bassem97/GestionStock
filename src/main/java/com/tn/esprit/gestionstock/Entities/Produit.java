@@ -37,6 +37,12 @@ public class Produit implements Serializable {
             @JoinColumn(name = "idFournisseur") })
     private List<Fournisseur> fournisseurs;
 
+    public Produit(String code, String libelle, float prixUnitaire) {
+        this.code = code;
+        this.libelle = libelle;
+        this.prixUnitaire = prixUnitaire;
+    }
+
     public Produit() {
         fournisseurs = new ArrayList<>();
     }

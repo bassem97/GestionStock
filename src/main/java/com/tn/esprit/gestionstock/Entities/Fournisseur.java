@@ -23,6 +23,11 @@ public class Fournisseur  implements Serializable {
         produits = new ArrayList<>();
     }
 
+    public Fournisseur(String code, String libelle) {
+        this.code = code;
+        this.libelle = libelle;
+    }
+
     public Long getIdFournisseur() {
         return idFournisseur;
     }

@@ -10,6 +10,7 @@ import java.util.List;
 public class Facture implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idFacture;
 
     private float montantRemise;
@@ -31,7 +32,11 @@ public class Facture implements Serializable {
         detailFactures = new ArrayList<>();
     }
 
-
+    public Facture(float montantRemise, float montantFacture, Boolean active) {
+        this.montantRemise = montantRemise;
+        this.montantFacture = montantFacture;
+        this.active = active;
+    }
 
     public Long getIdFacture() {
         return idFacture;

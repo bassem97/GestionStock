@@ -22,6 +22,11 @@ public class Rayon  implements Serializable {
         produits = new ArrayList<>();
     }
 
+    public Rayon(String code, String libelle) {
+        this.code = code;
+        this.libelle = libelle;
+    }
+
     public Long getIdRayon() {
         return idRayon;
     }
