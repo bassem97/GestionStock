@@ -2,8 +2,6 @@ package com.tn.esprit.gestionstock.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class DetailFacture implements Serializable {
@@ -21,12 +19,22 @@ public class DetailFacture implements Serializable {
     @JoinColumn(name = "idFacture")
     private Facture facture;
 
-    @OneToMany()
-    @JoinColumn(name = "idDetailFacture")
-    private List<Produit> produits;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idProduit")
+    private Produit produit;
+
+
+    public DetailFacture(int qte, float prixtotal, int pourcentageRemise, float montantRemise, Facture facture, Produit produit) {
+        this.qte = qte;
+        this.prixtotal = prixtotal;
+        this.pourcentageRemise = pourcentageRemise;
+        this.montantRemise = montantRemise;
+        this.facture = facture;
+        this.produit = produit;
+    }
 
     public DetailFacture() {
-        produits = new ArrayList<>();
+
     }
 
     public Long getIdDetailFacture() {
@@ -75,5 +83,13 @@ public class DetailFacture implements Serializable {
 
     public void setFacture(Facture facture) {
         this.facture = facture;
+    }
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 }

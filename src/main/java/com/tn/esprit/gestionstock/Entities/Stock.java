@@ -19,6 +19,8 @@ public class Stock implements Serializable {
     @JoinColumn(name = "idStock")
     private List<Produit> produits ;
 
+
+
     public Stock() {
         produits = new ArrayList<>();
     }
@@ -27,6 +29,7 @@ public class Stock implements Serializable {
         this.qte = qte;
         this.qteMin = qteMin;
         this.libelleStock = libelleStock;
+        produits = new ArrayList<>();
     }
 
     public Long getIdStock() {

@@ -15,9 +15,8 @@ public class Produit implements Serializable {
     private String libelle;
     private float prixUnitaire;
 
-    @ManyToOne()
-    @JoinColumn(name = "idDetailFacture")
-    private DetailFacture detailFacture;
+
+
 
     @ManyToOne()
     @JoinColumn(name = "idStock")
@@ -27,9 +26,13 @@ public class Produit implements Serializable {
     @JoinColumn(name = "idRayon")
     private Rayon rayon;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idDetailProduit")
     private DetailProduit detailProduit;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idFacture")
+    private List<DetailFacture> detailFactures;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Produit_Fournisseur", joinColumns = {
@@ -37,14 +40,28 @@ public class Produit implements Serializable {
             @JoinColumn(name = "idFournisseur") })
     private List<Fournisseur> fournisseurs;
 
+    public Produit(String code, String libelle, float prixUnitaire, DetailProduit detailProduit, Rayon rayon, Stock stock) {
+        this.code = code;
+        this.libelle = libelle;
+        this.prixUnitaire = prixUnitaire;
+        this.detailProduit = detailProduit;
+        this.rayon = rayon;
+        this.stock = stock;
+        this.detailFactures = new ArrayList<>();
+        this.fournisseurs = new ArrayList<>();
+    }
+
     public Produit(String code, String libelle, float prixUnitaire) {
         this.code = code;
         this.libelle = libelle;
         this.prixUnitaire = prixUnitaire;
+        this.detailFactures = new ArrayList<>();
+        this.fournisseurs = new ArrayList<>();
     }
 
     public Produit() {
         fournisseurs = new ArrayList<>();
+        this.detailFactures = new ArrayList<>();
     }
 
     public Long getIdProduit() {
@@ -79,12 +96,12 @@ public class Produit implements Serializable {
         this.prixUnitaire = prixUnitaire;
     }
 
-    public DetailFacture getDetailFacture() {
-        return detailFacture;
+    public List<DetailFacture> getDetailFactures() {
+        return detailFactures;
     }
 
-    public void setDetailFacture(DetailFacture detailFacture) {
-        this.detailFacture = detailFacture;
+    public void setDetailFactures(List<DetailFacture> detailFactures) {
+        this.detailFactures = detailFactures;
     }
 
     public Stock getStock() {
@@ -119,6 +136,8 @@ public class Produit implements Serializable {
         this.fournisseurs = fournisseurs;
     }
 
+
+
     @Override
     public String toString() {
         return "Produit{" +
@@ -126,11 +145,11 @@ public class Produit implements Serializable {
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
                 ", prixUnitaire=" + prixUnitaire +
-                ", detailFacture=" + detailFacture +
                 ", stock=" + stock +
                 ", rayon=" + rayon +
                 ", detailProduit=" + detailProduit +
-                ", Fournisseurs=" + fournisseurs +
+                ", detailFactures=" + detailFactures +
+                ", fournisseurs=" + fournisseurs +
                 '}';
     }
 }

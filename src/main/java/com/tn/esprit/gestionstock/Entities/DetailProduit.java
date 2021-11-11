@@ -17,9 +17,13 @@ public class DetailProduit implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDerniereModification;
 
+    @Enumerated(EnumType.STRING)
     private CategorieProduit categorieProduit;
 
-    public DetailProduit() {
+    public DetailProduit(Date dateCreation, Date dateDerniereModification, CategorieProduit categorieProduit) {
+        this.dateCreation = dateCreation;
+        this.dateDerniereModification = dateDerniereModification;
+        this.categorieProduit = categorieProduit;
     }
 
     public Long getIdDetailProduit() {
@@ -63,9 +67,4 @@ public class DetailProduit implements Serializable {
                 ", categorieProduit=" + categorieProduit +
                 '}';
     }
-
-    private enum CategorieProduit{
-        Electromenager, Alimentaire, Quincaillerie
-    }
-
 }

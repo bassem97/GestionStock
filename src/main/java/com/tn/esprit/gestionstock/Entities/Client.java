@@ -29,7 +29,9 @@ public class Client implements Serializable {
     Date dateNaissance;
     String email;
     String password;
+    @Enumerated(EnumType.STRING)
     CategorieClient categorieClient;
+    @Enumerated(EnumType.STRING)
     Profession proffesion;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

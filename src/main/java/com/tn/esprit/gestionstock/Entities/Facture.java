@@ -29,13 +29,25 @@ public class Facture implements Serializable {
     private List<DetailFacture> detailFactures;
 
     public Facture() {
+        this.active = false;
+        this.dateFacture  = new Date();
         detailFactures = new ArrayList<>();
     }
 
-    public Facture(float montantRemise, float montantFacture, Boolean active) {
+    public Facture(float montantRemise, float montantFacture,Client client) {
         this.montantRemise = montantRemise;
         this.montantFacture = montantFacture;
-        this.active = active;
+        this.client = client;
+        this.active = true;
+        this.dateFacture  = new Date();
+        detailFactures = new ArrayList<>();
+    }
+    public Facture(float montantRemise, float montantFacture) {
+        this.montantRemise = montantRemise;
+        this.montantFacture = montantFacture;
+        this.active = true;
+        this.dateFacture  = new Date();
+        detailFactures = new ArrayList<>();
     }
 
     public Long getIdFacture() {
