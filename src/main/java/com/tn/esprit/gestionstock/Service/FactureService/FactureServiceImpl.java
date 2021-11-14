@@ -1,6 +1,7 @@
 package com.tn.esprit.gestionstock.Service.FactureService;
 
 import com.tn.esprit.gestionstock.Entities.Facture;
+import com.tn.esprit.gestionstock.Repository.ClientRepository;
 import com.tn.esprit.gestionstock.Repository.FactureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class FactureServiceImpl implements FactureService{
 
     @Autowired
     private FactureRepository factureRepository;
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     @Override
     public Facture add(Facture facture) {
@@ -37,5 +41,15 @@ public class FactureServiceImpl implements FactureService{
     @Override
     public Facture findById(Long id) {
         return factureRepository.getById(id);
+    }
+
+    @Override
+    public List<Facture> getFacturesByClient(Long idClient) {
+//        return factureRepository.findAll()
+//                .stream()
+//                .filter(facture -> facture.getClient().getIdClient().equals(idClient))
+//                .collect(Collectors.toList());
+//        return factureRepository.findFacturesByClient(clientRepository.findById(idClient).get());
+        return factureRepository.findFacturesByClient(idClient);
     }
 }

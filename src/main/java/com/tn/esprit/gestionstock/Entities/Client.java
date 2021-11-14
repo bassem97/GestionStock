@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
 public class Client implements Serializable {
@@ -60,5 +59,20 @@ public class Client implements Serializable {
         this.password = password;
         this.categorieClient = categorieClient;
         factures = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "idClient=" + idClient +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", categorieClient=" + categorieClient +
+                ", proffesion=" + proffesion +
+//                ", factures=" + factures +
+                '}';
     }
 }

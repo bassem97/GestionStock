@@ -34,9 +34,15 @@ public class FactureServiceTest {
         factureService.delete(savedFacture.getIdFacture());
     }
 
+    @Ignore
     @Test
     public void testListFacture() {
         factureService.findAll()
                 .forEach( facture -> log.info("Facture :"+ facture));
+    }
+
+    @Test
+    public void testGetFacturesByClient(){
+        log.info("Client list of facture 1 : "+factureService.getFacturesByClient(1L));
     }
 }

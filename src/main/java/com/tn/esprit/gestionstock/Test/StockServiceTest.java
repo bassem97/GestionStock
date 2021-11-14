@@ -3,6 +3,7 @@ package com.tn.esprit.gestionstock.Test;
 import com.tn.esprit.gestionstock.Entities.Stock;
 import com.tn.esprit.gestionstock.Service.Stock.StockService;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class StockServiceTest {
     private StockService stockService;
 
     @Test
+    @Ignore
     public void testAddStock() {
         List<Stock> stocks = stockService.findAll();
         int expected = stocks.size();
@@ -33,8 +35,15 @@ public class StockServiceTest {
     }
 
     @Test
+    @Ignore
     public void testListStock() {
         stockService.findAll()
                 .forEach( stock -> log.info("Stock :"+ stock));
     }
+
+//    @Test
+//    @Ignore
+//    public void testRetrieveStatusStock(){
+//        log.info("Status stock ID 1 : "+stockService.retrieveStatusStock(1L));
+//    }
 }

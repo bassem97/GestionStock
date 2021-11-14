@@ -38,4 +38,6 @@ public class StockServiceImpl implements StockService{
     public Stock findById(Long id) {
         return stockRepository.getById(id);
     }
+
+
 }

@@ -115,6 +115,7 @@ public class Facture implements Serializable {
                 ", dateFacture=" + dateFacture +
                 ", active=" + active +
                 ", client=" + client +
+//                ", detailFactures=" + detailFactures +
                 '}';
     }
 }

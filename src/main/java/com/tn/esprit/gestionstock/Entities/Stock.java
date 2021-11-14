@@ -15,7 +15,7 @@ public class Stock implements Serializable {
     private int qteMin;
     private String libelleStock;
 
-    @OneToMany()
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "idStock")
     private List<Produit> produits ;
 

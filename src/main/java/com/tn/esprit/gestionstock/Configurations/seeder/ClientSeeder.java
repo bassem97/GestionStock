@@ -23,7 +23,7 @@ public class ClientSeeder {
 
     public void seed(){
         client1  = new Client("bassem","jadoui", new Date(97, Calendar.MAY,20),"bassem.jadoui@esprit.tn","123456", CategorieClient.Premium, Profession.Etudiant);
-        client2  = new Client("karim","manai", new Date(98, Calendar.JANUARY,12),"karim.manai@esprit.tn","123456", CategorieClient.Ordinaire, Profession.Docteur);
+        client2  = new Client("karim","manai", new Date(98, Calendar.JANUARY,12),"karim.manai@esprit.tn","123456", CategorieClient.Fidele, Profession.Docteur);
         client3  = new Client("mounir","hmidi", new Date(97, Calendar.NOVEMBER,3),"mounir.hmidi@esprit.tn","123456", CategorieClient.Fidele, Profession.Commercial);
        clientService.add(client1);
         clientService.add(client2);

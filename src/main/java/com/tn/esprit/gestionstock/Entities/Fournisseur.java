@@ -26,6 +26,7 @@ public class Fournisseur  implements Serializable {
     public Fournisseur(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;
+        produits = new ArrayList<>();
     }
 
     public Long getIdFournisseur() {
