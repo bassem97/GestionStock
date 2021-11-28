@@ -2,6 +2,8 @@ package com.tn.esprit.gestionstock.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,11 +26,12 @@ public class Facture implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"factures"})
     private Client client;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idFacture")
-    @JsonIgnore
+    @JsonIgnoreProperties({"facture"})
     private List<DetailFacture> detailFactures;
 
     public Facture() {

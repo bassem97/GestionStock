@@ -1,5 +1,7 @@
 package com.tn.esprit.gestionstock.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,10 +22,12 @@ public class Produit implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "idStock")
+    @JsonIgnoreProperties({"produits"})
     private Stock stock;
 
     @ManyToOne()
     @JoinColumn(name = "idRayon")
+    @JsonIgnoreProperties({"produits"})
     private Rayon rayon;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -32,12 +36,14 @@ public class Produit implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idFacture")
+    @JsonIgnoreProperties({"produit"})
     private List<DetailFacture> detailFactures;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Produit_Fournisseur", joinColumns = {
             @JoinColumn(name = "idProduit") }, inverseJoinColumns = {
             @JoinColumn(name = "idFournisseur") })
+    @JsonIgnoreProperties({"produits"})
     private List<Fournisseur> fournisseurs;
 
     public Produit(String code, String libelle, float prixUnitaire, DetailProduit detailProduit, Rayon rayon, Stock stock) {
