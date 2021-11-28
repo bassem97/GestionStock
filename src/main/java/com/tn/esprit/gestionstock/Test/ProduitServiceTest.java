@@ -50,7 +50,6 @@ public class ProduitServiceTest {
     }
 
     @Test
-    @Ignore
     public void testGetRevenuBrutProduit(){
         log.info("QTE : "+produitService.getRevenuBrutProduit(1L,new Date(121, Calendar.NOVEMBER, 11),new Date(121, Calendar.NOVEMBER, 14)));
     }

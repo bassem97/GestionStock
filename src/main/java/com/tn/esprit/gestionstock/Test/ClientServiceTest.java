@@ -46,6 +46,6 @@ public class ClientServiceTest {
 
     @Test
     public void testGetChiffreAffaireParCategorieClient() {
-        log.info(" chiifre = " + clientService.getChiffreAffaireParCategorieClient(CategorieClient.Fidele, new Date(121, Calendar.NOVEMBER, 10), new Date(121, Calendar.NOVEMBER, 18)));
+        log.info(" chiifre = " + clientService.getChiffreAffaireParCategorieClient(CategorieClient.Premium, new Date(121, Calendar.NOVEMBER, 10), new Date(121, Calendar.NOVEMBER, 18)));
     }
 }

@@ -80,7 +80,7 @@ public class ProduitServiceImpl implements ProduitService{
     }
 
     @Override
-//        @Scheduled(cron = "*/5 * * * * *") // every 30 seconds
+//        @Scheduled(cron = "*/60 * * * * *") // every 60 seconds
     @Scheduled(cron = "0 0 22 * * *") // everyday at 22h
     public void retrieveStatusStock() {
 //        produitRepository.findAll().stream().filter(produit -> produit.getStock().getQte()< produit.getStock().getQteMin())
