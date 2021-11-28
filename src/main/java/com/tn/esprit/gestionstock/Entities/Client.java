@@ -1,5 +1,6 @@
 package com.tn.esprit.gestionstock.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -35,6 +36,7 @@ public class Client implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"client"})
     List<Facture> factures;
 
     public Client() {
