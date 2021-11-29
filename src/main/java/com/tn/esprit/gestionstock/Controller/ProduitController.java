@@ -1,6 +1,7 @@
 package com.tn.esprit.gestionstock.Controller;
 
 import com.tn.esprit.gestionstock.Entities.Produit;
+import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Service.Produit.ProduitService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,9 +20,13 @@ public class ProduitController  {
     @Autowired
     private ProduitService produitService;
 
+    @Autowired
+    WebSocketController webSocketController;
+
     @ApiOperation(value = "Add produit ")
     @PostMapping("add")
-    public Produit add(@Valid @RequestBody Produit produit) {
+    public Produit add(@Valid @RequestBody Produit produit)  {
+
         return produitService.add(produit);
     }
 
@@ -33,7 +38,8 @@ public class ProduitController  {
 
     @ApiOperation(value = "Delete produit")
     @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable("id") long id) {
+    public void delete(@PathVariable("id") long id) throws Exception {
+        webSocketController.sendMessage(new WebSocketMessage("delete produit "+id,id));
         produitService.delete(id);
     }
 
