@@ -31,19 +31,7 @@ public class ProduitServiceImpl implements ProduitService{
 
     @Override
     public Produit update(Produit produit, Long id) {
-        if(produitRepository.findById(id).isPresent()){
-            Produit produit1 = produitRepository.findById(id).get();
-            produit1.setCode(produit.getCode());
-            produit1.setLibelle(produit.getLibelle());
-            produit1.setPrixUnitaire(produit.getPrixUnitaire());
-            produit1.setDetailProduit(produit.getDetailProduit());
-            produit1.setRayon(produit.getRayon());
-            produit1.setStock(produit.getStock());
-            produit1.setDetailFactures(produit.getDetailFactures());
-            produit1.setFournisseurs(produit.getFournisseurs());
-            return produitRepository.save(produit1);
-        }
-        return null;
+        return produitRepository.save(produit);
     }
 
     @Override
