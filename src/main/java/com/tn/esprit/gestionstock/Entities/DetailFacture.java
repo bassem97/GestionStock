@@ -21,7 +21,7 @@ public class DetailFacture implements Serializable {
     @JoinColumn(name = "idFacture")
     private Facture facture;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER ,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idProduit")
     @JsonIgnoreProperties({"detailFactures", "produit"})
     private Produit produit;
