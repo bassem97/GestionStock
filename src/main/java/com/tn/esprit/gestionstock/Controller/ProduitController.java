@@ -3,12 +3,14 @@ package com.tn.esprit.gestionstock.Controller;
 import com.tn.esprit.gestionstock.Entities.Produit;
 import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Service.Produit.ProduitService;
+import com.tn.esprit.gestionstock.Service.Produit.ProduitServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,7 +20,7 @@ import java.util.List;
 public class ProduitController  {
 
     @Autowired
-    private ProduitService produitService;
+    private ProduitServiceImpl produitService;
 
     @Autowired
     WebSocketController webSocketController;
@@ -33,6 +35,7 @@ public class ProduitController  {
     @ApiOperation(value = "Update produit ")
     @PutMapping("update/{id}")
     public Produit update(@Valid @RequestBody Produit produit,@PathVariable("id") Long id) {
+        produit.getDetailProduit().setDateDerniereModification(new Date());
         return produitService.update(produit, id);
     }
 
