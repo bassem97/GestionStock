@@ -72,7 +72,7 @@ public class Client implements Serializable {
                 ", password='" + password + '\'' +
                 ", categorieClient=" + categorieClient +
                 ", proffesion=" + proffesion +
-//                ", factures=" + factures +
+//              ", factures=" + factures +
                 '}';
     }
 }
