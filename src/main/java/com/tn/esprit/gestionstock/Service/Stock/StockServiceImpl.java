@@ -20,7 +20,7 @@ public class StockServiceImpl implements StockService{
 
     @Override
     public Stock update(Stock stock, Long id) {
-        return null;
+        return stockRepository.save(stock);
     }
 
     @Override
