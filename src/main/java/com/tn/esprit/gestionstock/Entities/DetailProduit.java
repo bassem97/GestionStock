@@ -21,10 +21,11 @@ public class DetailProduit implements Serializable {
     private CategorieProduit categorieProduit;
 
     public DetailProduit() {
+        this.dateCreation = new Date();
     }
 
     public DetailProduit(Date dateCreation, Date dateDerniereModification, CategorieProduit categorieProduit) {
-        this.dateCreation = dateCreation;
+        this.dateCreation = new Date();
         this.dateDerniereModification = dateDerniereModification;
         this.categorieProduit = categorieProduit;
     }
