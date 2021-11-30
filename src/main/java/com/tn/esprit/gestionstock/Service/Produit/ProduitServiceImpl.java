@@ -59,6 +59,8 @@ public class ProduitServiceImpl implements ProduitService{
         produit.setStock(stockRepository.getById(idStock));
         produitRepository.save(produit);
 
+
+
     }
 
     @Transactional
