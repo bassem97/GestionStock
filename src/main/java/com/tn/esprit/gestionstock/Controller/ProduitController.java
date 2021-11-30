@@ -26,13 +26,15 @@ public class ProduitController  {
     @ApiOperation(value = "Add produit ")
     @PostMapping("add")
     public Produit add(@Valid @RequestBody Produit produit)  {
-
-        return produitService.add(produit);
+        Produit p = produitService.add(produit);
+        webSocketController.sendMessage(new WebSocketMessage("add produit "+p.getIdProduit(),p.getIdProduit()));
+        return p;
     }
 
     @ApiOperation(value = "Update produit ")
     @PutMapping("update/{id}")
     public Produit update(@Valid @RequestBody Produit produit,@PathVariable("id") Long id) {
+        webSocketController.sendMessage(new WebSocketMessage("update produit "+id,id));
         return produitService.update(produit, id);
     }
 

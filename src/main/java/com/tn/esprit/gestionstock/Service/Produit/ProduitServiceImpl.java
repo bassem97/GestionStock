@@ -59,7 +59,7 @@ public class ProduitServiceImpl implements ProduitService{
 
     @Override
     public Produit findById(Long id) {
-        return produitRepository.getById(id);
+        return produitRepository.findById(id).get();
     }
 
     @Transactional
