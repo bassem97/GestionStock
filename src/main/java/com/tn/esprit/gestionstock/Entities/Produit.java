@@ -16,6 +16,7 @@ public class Produit implements Serializable {
     private String code;
     private String libelle;
     private float prixUnitaire;
+    private String image;
 
 
 
@@ -142,7 +143,13 @@ public class Produit implements Serializable {
         this.fournisseurs = fournisseurs;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public String toString() {
