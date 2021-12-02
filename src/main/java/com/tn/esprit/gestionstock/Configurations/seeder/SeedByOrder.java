@@ -26,6 +26,9 @@ public class SeedByOrder {
     @Autowired
     private FournisseurSeeder fournisseurSeeder;
 
+    @Autowired
+    private ReclamationSeeder reclamationSeeder;
+
 
     public void init() throws Exception {
         clientSeeder.seed();
@@ -33,6 +36,7 @@ public class SeedByOrder {
         stockSeeder.seed();
         rayonSeeder.seed();
         produitSeeder.seed();
+        reclamationSeeder.seed();
         fournisseurSeeder.seed();
         detailFactureSeeder.seed();
     }

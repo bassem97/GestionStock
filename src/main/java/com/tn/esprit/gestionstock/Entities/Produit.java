@@ -39,6 +39,11 @@ public class Produit implements Serializable {
     @JsonIgnoreProperties({"produit"})
     private List<DetailFacture> detailFactures;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "idProduit")
+//    @JsonIgnoreProperties({"client"})
+    private List<Reclamation> reclamations;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Produit_Fournisseur", joinColumns = {
             @JoinColumn(name = "idProduit") }, inverseJoinColumns = {
@@ -55,6 +60,7 @@ public class Produit implements Serializable {
         this.stock = stock;
         this.detailFactures = new ArrayList<>();
         this.fournisseurs = new ArrayList<>();
+        this.reclamations = new ArrayList<>();
     }
 
     public Produit(String code, String libelle, float prixUnitaire) {
@@ -63,11 +69,15 @@ public class Produit implements Serializable {
         this.prixUnitaire = prixUnitaire;
         this.detailFactures = new ArrayList<>();
         this.fournisseurs = new ArrayList<>();
+        this.reclamations = new ArrayList<>();
+
     }
 
     public Produit() {
         fournisseurs = new ArrayList<>();
         this.detailFactures = new ArrayList<>();
+        this.reclamations = new ArrayList<>();
+
     }
 
     public Long getIdProduit() {
@@ -142,7 +152,13 @@ public class Produit implements Serializable {
         this.fournisseurs = fournisseurs;
     }
 
+    public List<Reclamation> getReclamations() {
+        return reclamations;
+    }
 
+    public void setReclamations(List<Reclamation> reclamations) {
+        this.reclamations = reclamations;
+    }
 
     @Override
     public String toString() {
