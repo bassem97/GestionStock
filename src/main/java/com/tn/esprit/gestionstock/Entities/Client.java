@@ -1,7 +1,6 @@
 package com.tn.esprit.gestionstock.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -35,13 +34,20 @@ public class Client implements Serializable {
     @Enumerated(EnumType.STRING)
     Profession proffesion;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"client"})
     List<Facture> factures;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"client"})
+    List<Reclamation> reclamations;
+
     public Client() {
+
         factures = new ArrayList<>();
+        reclamations = new ArrayList<>();
     }
 
     public Client(String nom, String prenom, Date dateNaissance, String email, String password, CategorieClient categorieClient, Profession proffesion) {
@@ -53,6 +59,7 @@ public class Client implements Serializable {
         this.categorieClient = categorieClient;
         this.proffesion = proffesion;
         factures = new ArrayList<>();
+        reclamations = new ArrayList<>();
     }
 
     public Client(String nom, String prenom, String email, String password, CategorieClient categorieClient) {
@@ -62,6 +69,8 @@ public class Client implements Serializable {
         this.password = password;
         this.categorieClient = categorieClient;
         factures = new ArrayList<>();
+        reclamations = new ArrayList<>();
+
     }
 
     @Override
