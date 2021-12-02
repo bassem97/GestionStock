@@ -159,12 +159,11 @@ public class Produit implements Serializable {
     public List<Reclamation> getReclamations() {
         return reclamations;
     }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
     public void setReclamations(List<Reclamation> reclamations) {
         this.reclamations = reclamations;
+    }
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
