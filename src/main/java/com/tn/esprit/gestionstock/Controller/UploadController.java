@@ -1,22 +1,16 @@
 package com.tn.esprit.gestionstock.Controller;
 
 
-import org.springframework.http.HttpStatus;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 
 @RestController
 @CrossOrigin("*")
@@ -30,6 +24,7 @@ public class UploadController {
     // File f = new File("../../../../Gestion-Stock-Front/src/assets/");
 
     String test = "C:\\Users\\Zgon\\Desktop\\Stock\\Gestion-Stock-Front\\src\\assets\\img\\";
+//    String test = "C:\\Desktop\\4TWIN\\CSA\\Gestion-Stock-Front\\src\\assets\\img\\";
 
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public String[] uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
