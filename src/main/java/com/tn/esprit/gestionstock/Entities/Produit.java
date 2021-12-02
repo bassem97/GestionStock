@@ -16,6 +16,7 @@ public class Produit implements Serializable {
     private String code;
     private String libelle;
     private float prixUnitaire;
+    private String image;
 
 
 
@@ -155,9 +156,15 @@ public class Produit implements Serializable {
     public List<Reclamation> getReclamations() {
         return reclamations;
     }
+    public String getImage() {
+        return image;
+    }
 
     public void setReclamations(List<Reclamation> reclamations) {
         this.reclamations = reclamations;
+    }
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
