@@ -18,7 +18,7 @@ public class ReclamationSeeder {
     ClientSeeder clientSeeder;
 
     public void seed(){
-        Reclamation reclamation1 = new Reclamation("avis defavorable 1 ","Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet assumenda blanditiis dolore eaque eos esse et fugit, incidunt nihil, odit quam quibusdam saepe unde, veritatis vero vitae. Dicta.", produitSeeder.produit1, clientSeeder.client1);
+        Reclamation reclamation1 = new Reclamation("avis defavorable 1 ","Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet assumenda blanditiis dolore eaque eos esse et fugit, incidunt nihil, odit quam quibusdam saepe unde, veritatis vero vitae. Dicta.", produitSeeder.produit2, clientSeeder.client2);
         Reclamation reclamation2 = new Reclamation("avis defavorable 2 ","Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet assumenda blanditiis dolore eaque eos esse et fugit, incidunt nihil, odit quam quibusdam saepe unde, veritatis vero vitae. Dicta.", produitSeeder.produit2, clientSeeder.client2);
         Reclamation reclamation3 = new Reclamation("avis defavorable 3 ","Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet assumenda blanditiis dolore eaque eos esse et fugit, incidunt nihil, odit quam quibusdam saepe unde, veritatis vero vitae. Dicta. ", produitSeeder.produit3, clientSeeder.client3);
         Reclamation reclamation4 = new Reclamation("avis defavorable 4 ","Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet assumenda blanditiis dolore eaque eos esse et fugit, incidunt nihil, odit quam quibusdam saepe unde, veritatis vero vitae. Dicta. ", produitSeeder.produit3, clientSeeder.client3);

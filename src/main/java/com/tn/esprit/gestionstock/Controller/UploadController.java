@@ -23,8 +23,8 @@ public class UploadController {
             //+ "\\src\\main\\java\\com\\tn\\esprit\\gestionstock\\Uploads\\";
     // File f = new File("../../../../Gestion-Stock-Front/src/assets/");
 
-    String test = "C:\\Users\\Zgon\\Desktop\\Stock\\Gestion-Stock-Front\\src\\assets\\img\\";
-//    String test = "C:\\Desktop\\4TWIN\\CSA\\Gestion-Stock-Front\\src\\assets\\img\\";
+//    String test = "C:\\Users\\Zgon\\Desktop\\Stock\\Gestion-Stock-Front\\src\\assets\\img\\";
+    String test = "C:\\Desktop\\4TWIN\\CSA\\Gestion-Stock-Front\\src\\assets\\img\\";
 
     @RequestMapping(value="/upload", method = RequestMethod.POST)
     public String[] uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
