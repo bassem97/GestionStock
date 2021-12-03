@@ -13,15 +13,15 @@ public class Fournisseur  implements Serializable {
     private String code;
     private String libelle;
 
+    public Fournisseur() {
+        produits = new ArrayList<>();
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Produit_Fournisseur", joinColumns = {
             @JoinColumn(name = "idFournisseur") }, inverseJoinColumns = {
             @JoinColumn(name = "idProduit") })
     private List<Produit> produits;
-
-    public Fournisseur() {
-        produits = new ArrayList<>();
-    }
 
     public Fournisseur(String code, String libelle) {
         this.code = code;
