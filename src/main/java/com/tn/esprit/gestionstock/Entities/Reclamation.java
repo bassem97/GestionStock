@@ -23,18 +23,18 @@ public class Reclamation {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"reclamations","factures"})
-    private Client client;
+    private User user;
 
     public Reclamation() {
         this.etat = false;
     }
 
-    public Reclamation(String subject, String body ,Produit produit, Client client) {
+    public Reclamation(String subject, String body ,Produit produit, User user) {
         this.subject = subject;
         this.body = body;
         this.etat = false;
         this.produit = produit;
-        this.client = client;
+        this.user = user;
     }
 
     public Long getIdReclamation() {
@@ -69,12 +69,12 @@ public class Reclamation {
         this.produit = produit;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Client getClient() {
-        return client;
+    public User getUser() {
+        return user;
 
 
     }
@@ -94,7 +94,7 @@ public class Reclamation {
                 ", subject='" + subject + '\'' +
                 ", body='" + body + '\'' +
                 ", produit=" + produit +
-                ", client=" + client +
+                ", user=" + user +
                 '}';
     }
 }

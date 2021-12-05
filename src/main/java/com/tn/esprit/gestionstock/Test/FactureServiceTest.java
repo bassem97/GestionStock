@@ -43,6 +43,6 @@ public class FactureServiceTest {
 
     @Test
     public void testGetFacturesByClient(){
-        log.info("Client list of facture 1 : "+factureService.getFacturesByClient(1L));
+        log.info("User list of facture 1 : "+factureService.getFacturesByClient(1L));
     }
 }

@@ -36,13 +36,13 @@ public class Produit implements Serializable {
     private DetailProduit detailProduit;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idFacture")
+    @JoinColumn(name = "idDetailFacture")
     @JsonIgnoreProperties({"produit"})
     private List<DetailFacture> detailFactures;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idProduit")
-//    @JsonIgnoreProperties({"client"})
+    @JsonIgnoreProperties({"client"})
     private List<Reclamation> reclamations;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -173,11 +173,13 @@ public class Produit implements Serializable {
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
                 ", prixUnitaire=" + prixUnitaire +
+                ", image='" + image + '\'' +
                 ", stock=" + stock +
                 ", rayon=" + rayon +
-                ", detailProduit=" + detailProduit +
-                ", detailFactures=" + detailFactures +
-                ", fournisseurs=" + fournisseurs +
+//                ", detailProduit=" + detailProduit +
+//                ", detailFactures=" + detailFactures +
+//                ", reclamations=" + reclamations +
+//                ", fournisseurs=" + fournisseurs +
                 '}';
     }
 }
