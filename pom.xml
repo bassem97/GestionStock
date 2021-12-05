@@ -33,6 +33,26 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>5.6.0</version>
+        </dependency>
+
 
 <!--        <dependency>-->
 <!--            <groupId>org.springframework</groupId>-->
@@ -118,7 +138,6 @@
             <artifactId>spring-websocket</artifactId>
             <version>5.3.13</version>
         </dependency>
-
 
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/cz.habarta.typescript-generator/typescript-generator-maven-plugin &ndash;&gt;-->

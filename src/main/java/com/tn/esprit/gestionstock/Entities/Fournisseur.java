@@ -67,7 +67,7 @@ public class Fournisseur  implements Serializable {
                 "idFournisseur=" + idFournisseur +
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
-                ", produits=" + produits +
+//                ", produits=" + produits +
                 '}';
     }
 }
