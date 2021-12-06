@@ -26,7 +26,7 @@ public class UserSeeder {
 
     public void seed(){
         user1  = new User("jadoui","bassem", new Date(97, Calendar.MAY,20),"bassem.jadoui@esprit.tn","55135774","07496483","123456", CategorieUser.Premium, Profession.Etudiant);
-        user2  = new User("mannai","karim", new Date(98, Calendar.JANUARY,18),"karim.manni@esprit.tn","24125478","023456789","123456", CategorieUser.Fidele, Profession.Docteur);
+        user2  = new User("mannai","karim", new Date(98, Calendar.JANUARY,18),"karim.mannai@esprit.tn","24125478","023456789","123456", CategorieUser.Fidele, Profession.Docteur);
         user3  = new User("battiche","khaled", new Date(97, Calendar.NOVEMBER,3),"khaled.battiche@esprit.tn","90325478","057142148","123456", CategorieUser.Fidele, Profession.Commercial);
 
         Set<Role> rolesAdmin = new HashSet<>();
