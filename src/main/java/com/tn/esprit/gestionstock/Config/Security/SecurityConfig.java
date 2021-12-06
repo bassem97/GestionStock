@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 //                .antMatchers("/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("ws/**").permitAll()
+                .antMatchers("/user/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

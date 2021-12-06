@@ -12,6 +12,7 @@ public interface UserService {
     void delete(long id);
     List<User> findAll();
     User findById(Long id);
+    User findByUserByToken(String email);
     float getChiffreAffaireParCategorieUser(CategorieUser categorieUser, Date startDate, Date endDate);
 
 }
