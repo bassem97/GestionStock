@@ -3,6 +3,7 @@ package com.tn.esprit.gestionstock.Config.Security;
 
 import com.tn.esprit.gestionstock.Service.User.UserServiceDetails;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,9 +42,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             } catch ( ExpiredJwtException e) {
                 logger.warn("the token is expired and not valid anymore", e);
             }
-//            catch(SignatureException e){
-//                logger.error("Authentication Failed. cin or Password not valid.");
-//            }
+            catch(SignatureException e){
+                logger.error("Authentication Failed. email or Password not valid.");
+            }
         }
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 

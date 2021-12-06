@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.cors();
     }
 
     @Override
@@ -58,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("ws/**")
+        registry.addMapping("/**")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .exposedHeaders("Authorization");
     }
