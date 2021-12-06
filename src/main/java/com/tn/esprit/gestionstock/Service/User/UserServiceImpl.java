@@ -63,6 +63,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUserByToken(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
     public float getChiffreAffaireParCategorieUser(CategorieUser categorieUser, Date startDate, Date endDate) {
         return (float) userRepository.findAllByCategorieUser(categorieUser)
                 .stream()

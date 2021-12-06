@@ -5,6 +5,7 @@ import com.tn.esprit.gestionstock.Service.User.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -47,5 +48,10 @@ public class UserController {
     @GetMapping("findById/{id}")
     public User findById(@PathVariable("id") Long id) {
         return userService.findById(id);
+    }
+
+    @RequestMapping(value = "findByToken", method = RequestMethod.GET)
+    public User findUserByToken() {
+        return userService.findByUserByToken(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 }
