@@ -13,7 +13,6 @@ public interface UserService {
     List<User> findAll();
     User findById(Long id);
     User findByUserByToken(String email);
-    boolean switchDarkMode(User user);
     float getChiffreAffaireParCategorieUser(CategorieUser categorieUser, Date startDate, Date endDate);
 
 }

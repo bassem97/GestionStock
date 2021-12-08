@@ -5,6 +5,7 @@ import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Service.User.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @CrossOrigin("*")
 @Api(tags = "User management")
 @RequestMapping("/user/")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -33,7 +35,9 @@ public class UserController {
     @ApiOperation(value = "Update user ")
     @PutMapping("update/{id}")
     public User update(@Valid @RequestBody User user,@PathVariable("id") Long id) {
-        return userService.update(user, id);
+        User update = userService.update(user, id);
+        webSocketController.sendMessage(new WebSocketMessage("update user"+user.getIdUser()));
+        return update;
     }
 
     @ApiOperation(value = "Delete user")
@@ -59,11 +63,5 @@ public class UserController {
         return userService.findByUserByToken(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
-    @ApiOperation(value = "swicth theme ")
-    @PutMapping("switchTheme")
-    public boolean switchTheme(@Valid @RequestBody User user) {
-        webSocketController.sendMessage(new WebSocketMessage("switch theme"));
-        return userService.switchDarkMode(user);
-    }
 
 }

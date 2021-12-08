@@ -67,12 +67,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    @Override
-    public boolean switchDarkMode(User user) {
-        user.setDarkMode(!user.isDarkMode());
-        userRepository.save(user);
-        return user.isDarkMode();
-    }
+
 
     @Override
     public float getChiffreAffaireParCategorieUser(CategorieUser categorieUser, Date startDate, Date endDate) {
