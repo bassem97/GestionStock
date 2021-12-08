@@ -36,7 +36,7 @@ public class Produit implements Serializable {
     private DetailProduit detailProduit;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idDetailFacture")
+    @JoinColumn(name = "idProduit")
     @JsonIgnoreProperties({"produit"})
     private List<DetailFacture> detailFactures;
 
