@@ -1,12 +1,10 @@
-package com.tn.esprit.gestionstock.Configurations.seeder;
+package com.tn.esprit.gestionstock.Config.seeder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SeedByOrder {
-    @Autowired
-    private ClientSeeder clientSeeder;
 
     @Autowired
     private FactureSeeder factureSeeder;
@@ -26,13 +24,24 @@ public class SeedByOrder {
     @Autowired
     private FournisseurSeeder fournisseurSeeder;
 
+    @Autowired
+    private ReclamationSeeder reclamationSeeder;
+
+    @Autowired
+    private RoleSeeder roleSeeder;
+
+    @Autowired
+    private UserSeeder userSeeder;
+
 
     public void init() throws Exception {
-        clientSeeder.seed();
+        roleSeeder.seed();
+        userSeeder.seed();
         factureSeeder.seed();
         stockSeeder.seed();
         rayonSeeder.seed();
         produitSeeder.seed();
+        reclamationSeeder.seed();
         fournisseurSeeder.seed();
         detailFactureSeeder.seed();
     }

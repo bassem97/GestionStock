@@ -1,7 +1,5 @@
 package com.tn.esprit.gestionstock.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -25,9 +23,9 @@ public class Facture implements Serializable {
     private Boolean active;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"factures"})
-    private Client client;
+    @JoinColumn(name = "idUser")
+    @JsonIgnoreProperties({"roles"})
+    private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idFacture")
@@ -40,10 +38,10 @@ public class Facture implements Serializable {
         detailFactures = new ArrayList<>();
     }
 
-    public Facture(float montantRemise, float montantFacture,Client client) {
+    public Facture(float montantRemise, float montantFacture,User user) {
         this.montantRemise = montantRemise;
         this.montantFacture = montantFacture;
-        this.client = client;
+        this.user = user;
         this.active = true;
         this.dateFacture  = new Date();
         detailFactures = new ArrayList<>();
@@ -96,12 +94,12 @@ public class Facture implements Serializable {
         this.active = active;
     }
 
-    public Client getClient() {
-        return client;
+    public User getUser() {
+        return user;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<DetailFacture> getDetailFactures() {
@@ -120,7 +118,7 @@ public class Facture implements Serializable {
                 ", montantFacture=" + montantFacture +
                 ", dateFacture=" + dateFacture +
                 ", active=" + active +
-                ", client=" + client +
+                ", user=" + user +
 //                ", detailFactures=" + detailFactures +
                 '}';
     }

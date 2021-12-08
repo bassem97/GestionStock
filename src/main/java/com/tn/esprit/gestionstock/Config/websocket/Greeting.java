@@ -1,4 +1,4 @@
-package com.tn.esprit.gestionstock.Configurations;
+package com.tn.esprit.gestionstock.Config.websocket;
 
 public class Greeting {
 

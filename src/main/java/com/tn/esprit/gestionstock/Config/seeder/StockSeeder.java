@@ -1,4 +1,4 @@
-package com.tn.esprit.gestionstock.Configurations.seeder;
+package com.tn.esprit.gestionstock.Config.seeder;
 
 import com.tn.esprit.gestionstock.Entities.Stock;
 import com.tn.esprit.gestionstock.Service.Stock.StockService;

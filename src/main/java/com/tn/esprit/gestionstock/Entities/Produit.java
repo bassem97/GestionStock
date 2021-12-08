@@ -16,6 +16,7 @@ public class Produit implements Serializable {
     private String code;
     private String libelle;
     private float prixUnitaire;
+    private String image;
 
 
 
@@ -35,9 +36,14 @@ public class Produit implements Serializable {
     private DetailProduit detailProduit;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idFacture")
+    @JoinColumn(name = "idProduit")
     @JsonIgnoreProperties({"produit"})
     private List<DetailFacture> detailFactures;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idProduit")
+    @JsonIgnoreProperties({"client"})
+    private List<Reclamation> reclamations;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Produit_Fournisseur", joinColumns = {
@@ -55,6 +61,7 @@ public class Produit implements Serializable {
         this.stock = stock;
         this.detailFactures = new ArrayList<>();
         this.fournisseurs = new ArrayList<>();
+        this.reclamations = new ArrayList<>();
     }
 
     public Produit(String code, String libelle, float prixUnitaire) {
@@ -63,11 +70,15 @@ public class Produit implements Serializable {
         this.prixUnitaire = prixUnitaire;
         this.detailFactures = new ArrayList<>();
         this.fournisseurs = new ArrayList<>();
+        this.reclamations = new ArrayList<>();
+
     }
 
     public Produit() {
         fournisseurs = new ArrayList<>();
         this.detailFactures = new ArrayList<>();
+        this.reclamations = new ArrayList<>();
+
     }
 
     public Long getIdProduit() {
@@ -142,7 +153,19 @@ public class Produit implements Serializable {
         this.fournisseurs = fournisseurs;
     }
 
+    public List<Reclamation> getReclamations() {
+        return reclamations;
+    }
+    public String getImage() {
+        return image;
+    }
 
+    public void setReclamations(List<Reclamation> reclamations) {
+        this.reclamations = reclamations;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public String toString() {
@@ -151,11 +174,13 @@ public class Produit implements Serializable {
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
                 ", prixUnitaire=" + prixUnitaire +
+                ", image='" + image + '\'' +
                 ", stock=" + stock +
                 ", rayon=" + rayon +
-                ", detailProduit=" + detailProduit +
-                ", detailFactures=" + detailFactures +
-                ", fournisseurs=" + fournisseurs +
+//                ", detailProduit=" + detailProduit +
+//                ", detailFactures=" + detailFactures +
+//                ", reclamations=" + reclamations +
+//                ", fournisseurs=" + fournisseurs +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.tn.esprit.gestionstock.Configurations;
+package com.tn.esprit.gestionstock.Config.websocket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

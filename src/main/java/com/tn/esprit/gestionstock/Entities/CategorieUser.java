@@ -1,6 +1,6 @@
 package com.tn.esprit.gestionstock.Entities;
 
-public enum CategorieClient {
+public enum CategorieUser {
     Fidele, Ordinaire, Premium
 
 }

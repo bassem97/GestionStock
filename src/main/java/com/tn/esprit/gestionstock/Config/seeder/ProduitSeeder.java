@@ -1,4 +1,4 @@
-package com.tn.esprit.gestionstock.Configurations.seeder;
+package com.tn.esprit.gestionstock.Config.seeder;
 
 import com.tn.esprit.gestionstock.Entities.CategorieProduit;
 import com.tn.esprit.gestionstock.Entities.DetailProduit;
@@ -28,8 +28,11 @@ public class ProduitSeeder {
     public void seed(){
 
         produit1 = new Produit("P123","Produit 1",2.5F, new DetailProduit(new Date(),null, CategorieProduit.ALIMENTAIRE), rayonSeeder.rayon1, stockSeeder.stock1);
+        produit1.setImage("cover.jpeg");
         produit2 = new Produit("P456","Produit 2",5F, new DetailProduit(new Date(),null, CategorieProduit.QUINCAILLERIE), rayonSeeder.rayon2,stockSeeder.stock2);
+        produit2.setImage("cover.jpeg");
         produit3 = new Produit("P789","Produit 3",3F, new DetailProduit(new Date(),null, CategorieProduit.ELECTROMENAGER), rayonSeeder.rayon3, stockSeeder.stock3);
+        produit3.setImage("cover.jpeg");
 
         produitService.add(produit1);
         produitService.add(produit2);

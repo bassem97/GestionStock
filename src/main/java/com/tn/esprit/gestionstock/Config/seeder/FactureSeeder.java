@@ -1,4 +1,4 @@
-package com.tn.esprit.gestionstock.Configurations.seeder;
+package com.tn.esprit.gestionstock.Config.seeder;
 
 import com.tn.esprit.gestionstock.Entities.Facture;
 import com.tn.esprit.gestionstock.Service.FactureService.FactureService;
@@ -12,7 +12,7 @@ public class FactureSeeder {
     FactureService factureService;
 
     @Autowired
-    private ClientSeeder clientSeeder;
+    private UserSeeder userSeeder;
 
     public Facture  facture1;
     public Facture  facture2;
@@ -21,9 +21,9 @@ public class FactureSeeder {
 
 
     public  void seed(){
-        facture1 = new Facture(15F,50F, clientSeeder.client1);
-        facture2 = new Facture(3F,30F,clientSeeder.client2);
-        facture3 = new Facture(10F,50F,clientSeeder.client3);
+        facture1 = new Facture(15F,50F, userSeeder.user1);
+        facture2 = new Facture(3F,30F,userSeeder.user2);
+        facture3 = new Facture(10F,50F,userSeeder.user3);
         factureService.add(facture1);
         factureService.add(facture2);
         factureService.add(facture3);
