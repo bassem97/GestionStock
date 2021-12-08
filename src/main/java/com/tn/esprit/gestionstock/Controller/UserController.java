@@ -1,6 +1,7 @@
 package com.tn.esprit.gestionstock.Controller;
 
 import com.tn.esprit.gestionstock.Entities.User;
+import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Service.User.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,6 +20,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    WebSocketController webSocketController;
 
     @ApiOperation(value = "Add user ")
     @PostMapping("add")
@@ -54,4 +58,12 @@ public class UserController {
     public User findUserByToken() {
         return userService.findByUserByToken(SecurityContextHolder.getContext().getAuthentication().getName());
     }
+
+    @ApiOperation(value = "swicth theme ")
+    @PutMapping("switchTheme")
+    public boolean switchTheme(@Valid @RequestBody User user) {
+        webSocketController.sendMessage(new WebSocketMessage("switch theme"));
+        return userService.switchDarkMode(user);
+    }
+
 }
