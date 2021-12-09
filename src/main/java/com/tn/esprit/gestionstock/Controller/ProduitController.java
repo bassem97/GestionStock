@@ -23,6 +23,9 @@ public class ProduitController  {
     private ProduitService produitService;
 
     @Autowired
+    private DetailFactureController detailFactureController;
+
+    @Autowired
     WebSocketController webSocketController;
 
     @ApiOperation(value = "Add produit ")
@@ -58,5 +61,11 @@ public class ProduitController  {
     @GetMapping("findById/{id}")
     public Produit findById(@PathVariable("id") Long id) {
         return produitService.findById(id);
+    }
+
+    @ApiOperation(value = "Monthly revenue")
+    @GetMapping("revenue")
+    public Double getMonthlyRevenue() {
+        return detailFactureController.findAll().stream().filter(detailFacture -> detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth()).mapToDouble(value -> value.getPrixtotal() - value.getMontantRemise()).sum();
     }
 }

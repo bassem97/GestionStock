@@ -1,6 +1,7 @@
 package com.tn.esprit.gestionstock.Service.Produit;
 
 import com.tn.esprit.gestionstock.Entities.Produit;
+import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Repository.ProduitRepository;
 import com.tn.esprit.gestionstock.Repository.StockRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,20 @@ public class ProduitServiceImpl implements ProduitService{
 
     @Override
     public Produit update(Produit produit, Long id) {
-        return produitRepository.save(produit);
+        if (produitRepository.findById(id).isPresent()) {
+            Produit p = produitRepository.findById(id).get();
+            p.setImage(produit.getImage());
+            p.setStock(produit.getStock());
+            p.setCode(produit.getCode());
+            p.setLibelle(produit.getLibelle());
+            p.setPrixUnitaire(produit.getPrixUnitaire());
+            p.setRayon(produit.getRayon());
+            p.setDetailProduit(produit.getDetailProduit());
+            p.setFournisseurs(produit.getFournisseurs());
+            p.getDetailProduit().setDateDerniereModification(new Date());
+            return produitRepository.save(produit);
+        }
+        return null;
     }
 
     @Override

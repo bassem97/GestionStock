@@ -29,6 +29,8 @@ public class User implements Serializable {
 
     private String password;
 
+    private boolean isDarkMode;
+
     @Enumerated(EnumType.STRING)
     CategorieUser categorieUser;
     @Enumerated(EnumType.STRING)
@@ -49,6 +51,7 @@ public class User implements Serializable {
     public User() {
         this.factures = new ArrayList<>();
         this.roles = new HashSet<>();
+        this.isDarkMode = false;
     }
 
     public User(String lastName, String firstName, Date birthDate, String email, String phone , String cin, String password, CategorieUser categorieUser, Profession proffesion) {
@@ -59,9 +62,11 @@ public class User implements Serializable {
         this.email = email;
         this.cin = cin;
         this.password = password;
+        this.isDarkMode = false;
         this.categorieUser = categorieUser;
         this.proffesion = proffesion;
         this.roles = new HashSet<>();
+
     }
 
     public Long getIdUser() {
@@ -126,6 +131,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isDarkMode() {
+        return isDarkMode;
+    }
+
+    public void setDarkMode(boolean darkMode) {
+        isDarkMode = darkMode;
     }
 
     public CategorieUser getCategorieUser() {

@@ -59,12 +59,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        return userRepository.getById(id);
+        return userRepository.findById(id).get();
     }
 
     @Override
     public User findByUserByToken(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public boolean switchDarkMode(User user) {
+        user.setDarkMode(!user.isDarkMode());
+        userRepository.save(user);
+        return user.isDarkMode();
     }
 
     @Override

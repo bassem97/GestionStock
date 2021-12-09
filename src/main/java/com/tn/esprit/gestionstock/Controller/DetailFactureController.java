@@ -1,7 +1,10 @@
 package com.tn.esprit.gestionstock.Controller;
 
 import com.tn.esprit.gestionstock.Entities.DetailFacture;
+import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Service.DetailFacture.DetailFactureService;
+import com.tn.esprit.gestionstock.Service.FactureService.FactureService;
+import com.tn.esprit.gestionstock.Service.Produit.ProduitService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +21,21 @@ public class DetailFactureController  {
 
     @Autowired
     private DetailFactureService detailFactureService;
+    @Autowired
+    private ProduitService produitService;
+    @Autowired
+    private FactureService factureService;
+
+    @Autowired
+    WebSocketController webSocketController;
 
     @ApiOperation(value = "Add detailFacture ")
     @PostMapping("add")
     public DetailFacture add(@Valid @RequestBody DetailFacture detailFacture) {
+        /*detailFacture.setFacture(factureService.findById(1L));
+        detailFacture.setProduit(produitService.findById(1L));
+*/
+        webSocketController.sendMessage(new WebSocketMessage("New Detail Facture"));
         return detailFactureService.add(detailFacture);
     }
 

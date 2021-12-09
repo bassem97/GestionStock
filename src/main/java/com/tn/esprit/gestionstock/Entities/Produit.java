@@ -153,13 +153,12 @@ public class Produit implements Serializable {
         this.fournisseurs = fournisseurs;
     }
 
-    public List<Reclamation> getReclamations() {
-        return reclamations;
-    }
     public String getImage() {
         return image;
     }
-
+    public List<Reclamation> getReclamations() {
+        return reclamations;
+    }
     public void setReclamations(List<Reclamation> reclamations) {
         this.reclamations = reclamations;
     }
