@@ -22,7 +22,7 @@ public class FactureServiceImpl implements FactureService{
 
     @Override
     public Facture update(Facture facture, Long id) {
-        return null;
+        return factureRepository.save(facture);
     }
 
     @Override

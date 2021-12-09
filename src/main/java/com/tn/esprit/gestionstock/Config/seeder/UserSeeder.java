@@ -22,12 +22,14 @@ public class UserSeeder {
     public User user1;
     public User user2 ;
     public User user3 ;
+    public User user4;
 
 
     public void seed(){
         user1  = new User("jadoui","bassem", new Date(97, Calendar.MAY,20),"bassem.jadoui@esprit.tn","55135774","07496483","123456", CategorieUser.Premium, Profession.Etudiant);
         user2  = new User("mannai","karim", new Date(98, Calendar.JANUARY,18),"karim.mannai@esprit.tn","24125478","023456789","123456", CategorieUser.Fidele, Profession.Docteur);
         user3  = new User("battiche","khaled", new Date(97, Calendar.NOVEMBER,3),"khaled.battiche@esprit.tn","90325478","057142148","123456", CategorieUser.Fidele, Profession.Commercial);
+        user4  = new User("Saddem","Amine", new Date(99, Calendar.JULY,24),"naceuramine.saddem@esprit.tn","20027987","14325477","123456", CategorieUser.Fidele, Profession.Commercial);
 
         Set<Role> rolesAdmin = new HashSet<>();
         rolesAdmin.add(roleSeeder.admin);
@@ -38,9 +40,11 @@ public class UserSeeder {
         user1.setRoles(rolesAdmin);
         user2.setRoles(rolesUser);
         user3.setRoles(rolesUser);
+        user4.setRoles(rolesUser);
 
         userService.add(user1);
         userService.add(user2);
         userService.add(user3);
+        userService.add(user4);
     }
 }

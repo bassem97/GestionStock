@@ -24,7 +24,7 @@ public class Facture implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idUser")
-    @JsonIgnoreProperties({"roles"})
+    @JsonIgnoreProperties({"roles","factures"})
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
