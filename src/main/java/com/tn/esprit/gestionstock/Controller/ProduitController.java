@@ -2,8 +2,8 @@ package com.tn.esprit.gestionstock.Controller;
 
 import com.tn.esprit.gestionstock.Entities.Produit;
 import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
+import com.tn.esprit.gestionstock.Service.DetailFacture.DetailFactureService;
 import com.tn.esprit.gestionstock.Service.Produit.ProduitService;
-import com.tn.esprit.gestionstock.Service.Produit.ProduitServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ProduitController  {
     private ProduitService produitService;
 
     @Autowired
-    private DetailFactureController detailFactureController;
+    private DetailFactureService detailFactureService;
 
     @Autowired
     WebSocketController webSocketController;
@@ -66,6 +66,9 @@ public class ProduitController  {
     @ApiOperation(value = "Monthly revenue")
     @GetMapping("revenue")
     public Double getMonthlyRevenue() {
-        return detailFactureController.findAll().stream().filter(detailFacture -> detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth()).mapToDouble(value -> value.getPrixtotal() - value.getMontantRemise()).sum();
+        return detailFactureService.findAll().stream().
+                filter(detailFacture -> detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth()).
+                mapToDouble(value -> value.getPrixtotal() - value.getMontantRemise()).
+                sum();
     }
 }

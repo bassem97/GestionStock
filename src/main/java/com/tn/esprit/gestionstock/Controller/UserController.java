@@ -1,7 +1,6 @@
 package com.tn.esprit.gestionstock.Controller;
 
 import com.tn.esprit.gestionstock.Entities.User;
-import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Service.User.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,7 +35,7 @@ public class UserController {
     @PutMapping("update/{id}")
     public User update(@Valid @RequestBody User user,@PathVariable("id") Long id) {
         User update = userService.update(user, id);
-        webSocketController.sendMessage(new WebSocketMessage("update user"+user.getIdUser()));
+//        webSocketController.sendMessage(new WebSocketMessage("update user"+user.getIdUser()));
         return update;
     }
 

@@ -30,6 +30,8 @@ public class Role {
         this.users  = new ArrayList<>();
     }
 
+
+
     public Role(String roleName) {
         this.roleName = roleName;
     }
@@ -56,5 +58,22 @@ public class Role {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return roleName.equals(role.roleName);
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

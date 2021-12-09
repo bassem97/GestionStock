@@ -41,6 +41,8 @@ public class User implements Serializable {
     @JsonIgnoreProperties({"user"})
     List<Facture> factures;
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLES", joinColumns = {
             @JoinColumn(name = "user_id") }, inverseJoinColumns = {

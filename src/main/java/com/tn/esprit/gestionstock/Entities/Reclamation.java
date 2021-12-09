@@ -21,7 +21,7 @@ public class Reclamation {
     private Produit produit;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idClient")
+    @JoinColumn(name = "idUser")
     @JsonIgnoreProperties({"reclamations","factures"})
     private User user;
 
