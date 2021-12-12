@@ -155,6 +155,12 @@
             <artifactId>spring-websocket</artifactId>
             <version>5.3.13</version>
         </dependency>
+        <dependency>
+            <groupId>com.vaadin.external.google</groupId>
+            <artifactId>android-json</artifactId>
+            <version>0.0.20131108.vaadin1</version>
+            <scope>compile</scope>
+        </dependency>
 
 
         <!--        &lt;!&ndash; https://mvnrepository.com/artifact/cz.habarta.typescript-generator/typescript-generator-maven-plugin &ndash;&gt;-->

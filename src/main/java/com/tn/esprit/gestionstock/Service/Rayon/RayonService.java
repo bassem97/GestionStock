@@ -6,9 +6,9 @@ import com.tn.esprit.gestionstock.Entities.Rayon;
 import java.util.List;
 
 public interface RayonService {
-    Rayon add(Rayon rayon);
-    Rayon update(Rayon rayon, Long id);
-    void delete(long id);
-    List<Rayon> findAll();
-    Rayon findById(Long id);
+    List<Rayon> retrieveAllRayons();
+    Rayon addRayon(Rayon r);
+    void deleteRayon(Long id);
+    Rayon updateRayon(Rayon r);
+    Rayon retrieveRayon(Long id);
 }

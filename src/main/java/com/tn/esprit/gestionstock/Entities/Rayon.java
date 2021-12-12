@@ -1,62 +1,48 @@
 package com.tn.esprit.gestionstock.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Rayon  implements Serializable {
-
+@Getter
+@Setter
+@NoArgsConstructor
+//@JsonIdentityInfo(
+//		generator = ObjectIdGenerators.PropertyGenerator.class,
+//		property = "idRayon")
+public class Rayon implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRayon;
-    private String code;
-    private String libelle;
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column(name="idRayon")
+    @NonNull
+    long idRayon;
+    @Column(length = 64)
+    @NonNull
+    String code;
+    @Column(length = 64)
+    @NonNull
+    String  libelle;
 
-    @OneToMany()
-    @JoinColumn(name = "idRayon")
-    private List<Produit> produits;
+    @OneToMany(mappedBy="rayons",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JsonManagedReference
+    //@JsonIgnore
+    //@OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Produit> set_r_produits=new HashSet<Produit>();
 
-    public Rayon() {
-        produits = new ArrayList<>();
+    public Set<Produit> getSet_r_produits() {
+        return set_r_produits;
     }
 
-    public Rayon(String code, String libelle) {
-        this.code = code;
-        this.libelle = libelle;
-    }
-
-    public Long getIdRayon() {
-        return idRayon;
-    }
-
-    public void setIdRayon(Long idRayon) {
-        this.idRayon = idRayon;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
+    public void setSet_r_produits(Set<Produit> set_r_produits) {
+        this.set_r_produits = set_r_produits;
     }
 
     @Override
@@ -65,7 +51,6 @@ public class Rayon  implements Serializable {
                 "idRayon=" + idRayon +
                 ", code='" + code + '\'' +
                 ", libelle='" + libelle + '\'' +
-                ", produits=" + produits +
                 '}';
     }
 }

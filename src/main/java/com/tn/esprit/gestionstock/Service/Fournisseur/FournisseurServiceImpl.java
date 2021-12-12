@@ -1,10 +1,12 @@
 package com.tn.esprit.gestionstock.Service.Fournisseur;
 
 import com.tn.esprit.gestionstock.Entities.Fournisseur;
+import com.tn.esprit.gestionstock.Entities.Produit;
 import com.tn.esprit.gestionstock.Repository.FournisseurRepository;
 import com.tn.esprit.gestionstock.Repository.ProduitRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,51 +17,62 @@ import java.util.List;
 public class FournisseurServiceImpl implements FournisseurService {
 
     @Autowired
-    private FournisseurRepository fournisseurRepository;
-
+    FournisseurRepository fournisseurRepository;
     @Autowired
-    private ProduitRepository produitRepository;
+    ProduitRepository produitRepository;
+    /*@PersistenceContext
+    private EntityManager entityManager;*/
 
     @Override
-    public Fournisseur add(Fournisseur fournisseur) {
-        return fournisseurRepository.save(fournisseur);
+    public List<Fournisseur> retrieveAllFournisseurs() {
+        return (List<Fournisseur>) this.fournisseurRepository.findAll();
     }
 
     @Override
-    public Fournisseur update(Fournisseur fournisseur, Long id) {
-        if(fournisseurRepository.findById(id).isPresent()){
-            Fournisseur fournisseur1 = fournisseurRepository.findById(id).get();
-            fournisseur1.setCode(fournisseur.getCode());
-            fournisseur1.setLibelle(fournisseur.getLibelle());
-            fournisseur1.setProduits(fournisseur.getProduits());
-            return fournisseurRepository.save(fournisseur1);
+    public Fournisseur addFournisseur(Fournisseur f) {
+        return this.fournisseurRepository.save(f);
+    }
+
+    @Override
+    public void deleteFournisseur(Long id) {
+        this.fournisseurRepository.deleteById(id);
+    }
+
+    @Override
+    public Fournisseur updateFournisseur(Fournisseur f) {
+        return this.fournisseurRepository.save(f);
+    }
+
+    @Override
+    public Fournisseur retrieveFournisseur(Long id) {
+        return this.fournisseurRepository.findById(id).get();
+    }
+
+    @Override
+    public void assignFournisseurToProduit(Long fournisseurId, Long produitId) {
+        if (fournisseurId != null && produitId != null) {
+            if (this.produitRepository.findById(produitId).isPresent()
+                    && this.fournisseurRepository.findById(fournisseurId).isPresent()) {
+                Produit u = this.produitRepository.findById(produitId).get();
+                u.getFournisseurs().add(this.fournisseurRepository.findById(fournisseurId).get());
+                this.produitRepository.save(u);
+            }
         }
-        return null;
-    }
-
-    @Override
-    public void delete(long id) {
-        fournisseurRepository.deleteById(id);
-    }
-
-    @Override
-    public List<Fournisseur> findAll() {
-        return fournisseurRepository.findAll();
     }
 
 
-    @Override
-    public Fournisseur findById(Long id) {
-        return fournisseurRepository.getById(id);
-    }
-
-    @Transactional
-    @Override
-    public void assignFournisseurToProduit(Long idFournisseur, Long idProduit) {
-        Fournisseur fournisseur = fournisseurRepository.getById(idFournisseur);
-        log.info("ID fournisseur  :"+fournisseur.getIdFournisseur());
-        log.info("ID PRODUIT  :"+produitRepository.getById(idProduit).getIdProduit());
-        fournisseur.getProduits().add(produitRepository.getById(idProduit));
-        fournisseurRepository.save(fournisseur);
+    /*@Transactional
+    public void alterMyTableAddMyColumn() {
+        List<Fournisseur> check_list= (List<Fournisseur>) this.fournisseurRepository.findAll();
+        if(check_list.size()==0) {
+            String query = "ALTER table fournisseur AUTO_INCREMENT=1";
+            entityManager.createNativeQuery(query).executeUpdate();
+        }
+    }*/
+    @Scheduled(cron = "*/5 * * * * *")
+    public void reset_value(){
+        List<Fournisseur> check_list= (List<Fournisseur>) this.fournisseurRepository.findAll();
+        if(check_list.size()==0)
+            this.fournisseurRepository.reset_auto_increment();
     }
 }

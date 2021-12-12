@@ -5,11 +5,11 @@ import com.tn.esprit.gestionstock.Entities.Fournisseur;
 import java.util.List;
 
 public interface FournisseurService {
-    Fournisseur add(Fournisseur fournisseur);
-    Fournisseur update(Fournisseur fournisseur, Long id);
-    void delete(long id);
-    List<Fournisseur> findAll();
-    Fournisseur findById(Long id);
+    List<Fournisseur> retrieveAllFournisseurs();
+    Fournisseur addFournisseur(Fournisseur f);
+    void deleteFournisseur(Long id);
+    Fournisseur updateFournisseur(Fournisseur f);
+    Fournisseur retrieveFournisseur(Long id);
     void assignFournisseurToProduit(Long fournisseurId, Long produitId);
 
 }
