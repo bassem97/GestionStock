@@ -71,6 +71,11 @@ public class User implements Serializable {
 
     }
 
+    public User(String firstName, String lastName) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+    }
+
     public Long getIdUser() {
         return idUser;
     }

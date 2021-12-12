@@ -25,7 +25,11 @@ public class GestionStockApplication {
     @Autowired
     UserRepository userRepository;
 
-    public static void main(String[] args) { SpringApplication.run(GestionStockApplication.class, args); }
+    public static void main(String[] args) {
+        SpringApplication.run(GestionStockApplication.class, args);
+//        System.exit(SpringApplication.exit(SpringApplication.run(GestionStockApplication.class, args)));
+
+    }
 
     @PostConstruct
     public void init() throws Exception {
@@ -52,5 +56,7 @@ public class GestionStockApplication {
         };
     }
 
-
 }
+
+
+

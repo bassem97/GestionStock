@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
-//pour prendre du user les champs qui vont etre utilisé pour le login
 public class MyUserDetails implements UserDetails {
     private User user;
 
@@ -27,7 +26,6 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        log.info("USERRRR " + this.user);
         return this.user.getPassword();
     }
 

@@ -97,4 +97,17 @@ public class DetailFacture implements Serializable {
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
+
+    @Override
+    public String toString() {
+        return "DetailFacture{" +
+                "idDetailFacture=" + idDetailFacture +
+                ", qte=" + qte +
+                ", prixtotal=" + prixtotal +
+                ", pourcentageRemise=" + pourcentageRemise +
+                ", montantRemise=" + montantRemise +
+                ", facture=" + facture +
+                ", produit=" + produit +
+                '}';
+    }
 }

@@ -67,7 +67,14 @@ public class ProduitController  {
     @GetMapping("revenue")
     public Double getMonthlyRevenue() {
         return detailFactureService.findAll().stream().
-                filter(detailFacture -> detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth()).
+                filter(detailFacture -> {
+                    try {
+                        return detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth();
+                    }
+                    catch (Exception e) {
+                        return false;
+                }
+                }).
                 mapToDouble(value -> value.getPrixtotal() - value.getMontantRemise()).
                 sum();
     }
