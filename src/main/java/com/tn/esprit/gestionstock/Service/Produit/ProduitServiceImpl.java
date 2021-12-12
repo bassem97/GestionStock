@@ -39,7 +39,7 @@ public class ProduitServiceImpl implements ProduitService{
             p.setCode(produit.getCode());
             p.setLibelle(produit.getLibelle());
             p.setPrixUnitaire(produit.getPrixUnitaire());
-            p.setRayon(produit.getRayon());
+            p.setRayons(produit.getRayons());
             p.setDetailProduit(produit.getDetailProduit());
             p.setFournisseurs(produit.getFournisseurs());
             p.getDetailProduit().setDateDerniereModification(new Date());

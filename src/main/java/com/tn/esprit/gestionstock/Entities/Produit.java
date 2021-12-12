@@ -29,7 +29,7 @@ public class Produit implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "idRayon")
     @JsonIgnoreProperties({"produits"})
-    private Rayon rayon;
+    private Rayon rayons;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idDetailProduit")
@@ -57,7 +57,7 @@ public class Produit implements Serializable {
         this.libelle = libelle;
         this.prixUnitaire = prixUnitaire;
         this.detailProduit = detailProduit;
-        this.rayon = rayon;
+        this.rayons = rayon;
         this.stock = stock;
         this.detailFactures = new ArrayList<>();
         this.fournisseurs = new ArrayList<>();
@@ -129,12 +129,12 @@ public class Produit implements Serializable {
         this.stock = stock;
     }
 
-    public Rayon getRayon() {
-        return rayon;
+    public Rayon getRayons() {
+        return rayons;
     }
 
-    public void setRayon(Rayon rayon) {
-        this.rayon = rayon;
+    public void setRayons(Rayon rayon) {
+        this.rayons = rayon;
     }
 
     public DetailProduit getDetailProduit() {
@@ -175,7 +175,7 @@ public class Produit implements Serializable {
                 ", prixUnitaire=" + prixUnitaire +
                 ", image='" + image + '\'' +
                 ", stock=" + stock +
-                ", rayon=" + rayon +
+                ", rayon=" + rayons +
 //                ", detailProduit=" + detailProduit +
 //                ", detailFactures=" + detailFactures +
 //                ", reclamations=" + reclamations +

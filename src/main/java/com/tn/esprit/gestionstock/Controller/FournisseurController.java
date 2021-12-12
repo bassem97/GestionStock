@@ -1,51 +1,46 @@
 package com.tn.esprit.gestionstock.Controller;
 
 import com.tn.esprit.gestionstock.Entities.Fournisseur;
+import com.tn.esprit.gestionstock.Repository.FournisseurRepository;
 import com.tn.esprit.gestionstock.Service.Fournisseur.FournisseurService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
-@CrossOrigin("*")
-@Api(tags = "Fournisseur management")
-@RequestMapping("/fournisseur/")
-public class FournisseurController  {
-
+public class FournisseurController {
     @Autowired
-    private FournisseurService fournisseurService;
+    FournisseurService fournisseurService;
+    @Autowired
+    FournisseurRepository fournisseurRepository;
 
-    @ApiOperation(value = "Add fournisseur ")
-    @PostMapping("add")
-    public Fournisseur add(@Valid @RequestBody Fournisseur fournisseur) {
-        return fournisseurService.add(fournisseur);
+    @RequestMapping(value = "/Fournisseurs",method= RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
+    public List<Fournisseur> retrieveAllFournisseurs(){
+        return this.fournisseurService.retrieveAllFournisseurs();
     }
 
-    @ApiOperation(value = "Update fournisseur ")
-    @PutMapping("update/{id}")
-    public Fournisseur update(@Valid @RequestBody Fournisseur fournisseur,@PathVariable("id") Long id) {
-        return fournisseurService.update(fournisseur, id);
+    @RequestMapping(value ="/Fournisseur/Delete",method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void Delete(@RequestBody Fournisseur fournisseur){
+        this.fournisseurService.deleteFournisseur(fournisseur.getIdFournisseur());
+        if(this.fournisseurService.retrieveAllFournisseurs().size()!=0) {
+            long max = this.fournisseurService.retrieveAllFournisseurs().stream().mapToLong(Fournisseur::getIdFournisseur).max().getAsLong();
+            max += 1;
+            this.fournisseurRepository.fix_auto_increment((int) max);
+        }
     }
 
-    @ApiOperation(value = "Delete fournisseur")
-    @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable("id") long id) {
-        fournisseurService.delete(id);
+    @RequestMapping(value = "/Fournisseur/Add",method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Fournisseur Add(@RequestBody Fournisseur fournisseur){
+        return this.fournisseurService.addFournisseur(fournisseur);
+
     }
 
-    @ApiOperation(value = "Retreive all fournisseurs")
-    @GetMapping("list")
-    public List<Fournisseur> findAll() {
-        return fournisseurService.findAll();
-    }
+    @RequestMapping(value = "/Fournisseur/Update",method = RequestMethod.PUT,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Fournisseur Update(@RequestBody Fournisseur fournisseur){
+        return this.fournisseurService.updateFournisseur(fournisseur);
 
-    @ApiOperation(value = "Find fournisseur by provided id")
-    @GetMapping("findById/{id}")
-    public Fournisseur findById(@PathVariable("id") Long id) {
-        return fournisseurService.findById(id);
     }
 }
