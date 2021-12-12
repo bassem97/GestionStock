@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @CrossOrigin("*")
@@ -67,8 +66,35 @@ public class ProduitController  {
     @GetMapping("revenue")
     public Double getMonthlyRevenue() {
         return detailFactureService.findAll().stream().
-                filter(detailFacture -> detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth()).
+                filter(detailFacture -> {
+                    try {
+                        return detailFacture.getFacture().getDateFacture().getMonth() == new Date().getMonth();
+                    }
+                    catch (Exception e) {
+                        return false;
+                    }
+                }).
                 mapToDouble(value -> value.getPrixtotal() - value.getMontantRemise()).
                 sum();
+    }
+
+    @ApiOperation(value = "revenue By Month")
+    @GetMapping("revenueByMonth")
+    public List<Double> getRevenueByMonth() {
+        List<Double> result = new ArrayList<>();
+        for(int i=0; i<12; i++) {
+            int finalI = i;
+            result.add(detailFactureService.findAll().stream().
+                    filter(detailFacture -> {
+                        try {
+                            return detailFacture.getFacture().getDateFacture().getMonth() == finalI;
+                        } catch (Exception e) {
+                            return false;
+                        }
+                    }).
+                    mapToDouble(value -> value.getPrixtotal() - value.getMontantRemise()).
+                    sum());
+        }
+        return result;
     }
 }
