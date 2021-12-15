@@ -16,6 +16,7 @@ import java.util.*;
 @CrossOrigin("*")
 @Api(tags = "Produit management")
 @RequestMapping("/produit/")
+
 public class ProduitController  {
 
     @Autowired
@@ -46,6 +47,8 @@ public class ProduitController  {
     @ApiOperation(value = "Delete produit")
     @DeleteMapping("delete/{id}")
     public void delete(@PathVariable("id") long id) throws Exception {
+        System.out.println("######################");
+        System.out.println(id);
         webSocketController.sendMessage(new WebSocketMessage("delete produit "+id,id));
         produitService.delete(id);
     }

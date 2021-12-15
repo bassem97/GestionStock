@@ -6,9 +6,7 @@ import com.tn.esprit.gestionstock.Repository.FournisseurRepository;
 import com.tn.esprit.gestionstock.Repository.ProduitRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -69,7 +67,7 @@ public class FournisseurServiceImpl implements FournisseurService {
             entityManager.createNativeQuery(query).executeUpdate();
         }
     }*/
-    @Scheduled(cron = "*/5 * * * * *")
+//    @Scheduled(cron = "*/5 * * * * *")
     public void reset_value(){
         List<Fournisseur> check_list= (List<Fournisseur>) this.fournisseurRepository.findAll();
         if(check_list.size()==0)

@@ -53,8 +53,8 @@ public class RayonController {
     public void Delete(@RequestBody Rayon rayon){
         this.rayonService.retrieveAllRayons().forEach(ray -> {
             ray.getSet_r_produits().forEach(produit -> {
-                if(produit.getRayons().getIdRayon()==rayon.getIdRayon()) {
-                    produit.setRayons(null);
+                if(produit.getRayon().getIdRayon()==rayon.getIdRayon()) {
+                    produit.setRayon(null);
                     produitRepository.save(produit);
                 }
             });

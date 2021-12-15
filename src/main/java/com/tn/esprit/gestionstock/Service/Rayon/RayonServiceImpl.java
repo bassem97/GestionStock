@@ -4,7 +4,6 @@ import com.tn.esprit.gestionstock.Entities.Rayon;
 import com.tn.esprit.gestionstock.Repository.ProduitRepository;
 import com.tn.esprit.gestionstock.Repository.RayonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +21,10 @@ public class RayonServiceImpl implements RayonService{
 
     @Override
     public Rayon addRayon(Rayon r) {
-        r.getSet_r_produits().add(this.produitRepository.findById(1L).get());
-        r.setIdRayon(r.getIdRayon());
-        r.setCode(r.getCode());
-        r.setLibelle(r.getLibelle());
+//        r.getSet_r_produits().add(this.produitRepository.findById(1L).get());
+//        r.setIdRayon(r.getIdRayon());
+//        r.setCode(r.getCode());
+//        r.setLibelle(r.getLibelle());
 
         return this.rayonRepository.save(r);
     }
@@ -50,7 +49,7 @@ public class RayonServiceImpl implements RayonService{
         return this.rayonRepository.findById(id).get();
     }
 
-    @Scheduled(cron = "*/5 * * * * *")
+//    @Scheduled(cron = "*/5 * * * * *")
     public void reset_value(){
         List<Rayon> check_list= (List<Rayon>) this.rayonRepository.findAll();
         if(check_list.size()==0)

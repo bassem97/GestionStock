@@ -1,7 +1,6 @@
 package com.tn.esprit.gestionstock.Service.Produit;
 
 import com.tn.esprit.gestionstock.Entities.Produit;
-import com.tn.esprit.gestionstock.Entities.WebSocketMessage;
 import com.tn.esprit.gestionstock.Repository.ProduitRepository;
 import com.tn.esprit.gestionstock.Repository.StockRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +38,7 @@ public class ProduitServiceImpl implements ProduitService{
             p.setCode(produit.getCode());
             p.setLibelle(produit.getLibelle());
             p.setPrixUnitaire(produit.getPrixUnitaire());
-            p.setRayons(produit.getRayons());
+            p.setRayon(produit.getRayon());
             p.setDetailProduit(produit.getDetailProduit());
             p.setFournisseurs(produit.getFournisseurs());
             p.getDetailProduit().setDateDerniereModification(new Date());

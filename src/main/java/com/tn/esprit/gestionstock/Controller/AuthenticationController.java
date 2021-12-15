@@ -51,7 +51,6 @@ public class AuthenticationController {
             token = tokenProvider.generateToken(userDetails,1);
 //        else token = tokenProvider.generateToken(userDetails,9999);
 
-//        System.out.println("GHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"+tokenProvider.getTokenHours());
         return ResponseEntity.ok(new JwtRespone(token));
     }
 

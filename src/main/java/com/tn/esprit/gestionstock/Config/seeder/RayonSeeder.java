@@ -16,12 +16,12 @@ public class RayonSeeder {
     public Rayon rayon3;
 
     public void seed(){
-//        rayon1 = new Rayon("RA1","Rayon 1");
-//        rayon2 = new Rayon("RA2","Rayon 2");
-//        rayon3 = new Rayon("RA3","Rayon 3");
-//
-//        rayonService.add(rayon1);
-//        rayonService.add(rayon2);
-//        rayonService.add(rayon3);
+        rayon1 = new Rayon("RA1","Rayon 1");
+        rayon2 = new Rayon("RA2","Rayon 2");
+        rayon3 = new Rayon("RA3","Rayon 3");
+
+        rayonService.addRayon(rayon1);
+        rayonService.addRayon(rayon2);
+        rayonService.addRayon(rayon3);
     }
 }

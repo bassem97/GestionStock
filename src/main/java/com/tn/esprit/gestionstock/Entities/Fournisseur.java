@@ -2,6 +2,8 @@ package com.tn.esprit.gestionstock.Entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -23,7 +25,24 @@ public class Fournisseur implements Serializable {
     @Column(length = 128,nullable = true)
     String  latitude_fournisseur;
 
-    public Fournisseur() {}
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Produit_Fournisseur", joinColumns = {
+            @JoinColumn(name = "idFournisseur") }, inverseJoinColumns = {
+            @JoinColumn(name = "idProduit") })
+//    @JsonIgnoreProperties("fournisseurs")
+    private List<Produit> produits;
+
+    public Fournisseur() {
+        produits = new ArrayList<>();
+    }
+
+    public Fournisseur(String code, String libelle, String avatar, String localisation_fournisseur) {
+        this.code = code;
+        this.libelle = libelle;
+        this.avatar = avatar;
+        this.localisation_fournisseur = localisation_fournisseur;
+        produits = new ArrayList<>();
+    }
 
     public String getLocalisation_fournisseur() {
         return localisation_fournisseur;
@@ -79,6 +98,14 @@ public class Fournisseur implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
     }
 
     @Override
