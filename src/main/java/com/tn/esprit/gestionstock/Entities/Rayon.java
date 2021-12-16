@@ -29,6 +29,7 @@ public class Rayon implements Serializable {
     @NonNull
     String  libelle;
 
+
 //        @OneToMany(mappedBy="rayon",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @OneToMany()
     @JoinColumn(name = "idRayon")
